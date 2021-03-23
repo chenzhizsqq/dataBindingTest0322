@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--就是在这里，要说明被封装的东西-->
+    <data>
+        <variable
+            name="UserViewModel"
+            type="com.test.databindingtest0322.UserViewModel" />
+    </data>
+    <!--就是在这里，要说明被封装的东西-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="state:"
+            android:textSize="30dp"
+            />
+
+        <!--然后在下面android:text中写上了"@={UserViewModel.user.status}"，
+        这个被封装的变量。而user这个变量一定要public的，这样才能够读写-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:text="@={UserViewModel.user.status}"
+            android:id="@+id/txt_user_login_status"/>
+
+        <!--然后在下面android:text中写上了"@={UserViewModel.user.userName}"，
+        这个被封装的变量。而user这个变量一定要public的，这样才能够读写-->
+        <EditText
+            android:id="@+id/edit_username"
+            android:layout_width="match_parent"
+            android:inputType="textEmailAddress"
+            android:layout_height="wrap_content"
+            android:text="@={UserViewModel.user.userName}"
+            android:hint="username"/>
+
+        <!--然后在下面android:text中写上了"@={UserViewModel.user.password}"，
+        这个被封装的变量。而user这个变量一定要public的，这样才能够读写-->
+        <EditText
+            android:id="@+id/edit_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:text="@={UserViewModel.user.password}"
+            android:hint="password"/>
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:onClick="click"
+            android:text="submit"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:visibility="gone"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+</layout>
